@@ -1,1 +1,197 @@
 @import "tailwindcss";
+@import "./fonts.css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ───────────────────────────────────────────
+   Tailwind v4 theme mapping
+   ─────────────────────────────────────────── */
+@theme inline {
+    --font-sans: "Vazirmatn", ui-sans-serif, system-ui, sans-serif;
+
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+
+    --color-success: var(--success);
+    --color-success-foreground: var(--success-foreground);
+    --color-highlight: var(--highlight);
+    --color-accent-2: var(--accent-2);
+    --color-accent-deep: var(--accent-deep);
+    --color-code: var(--code);
+    --color-code-foreground: var(--code-foreground);
+
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+
+    --color-sidebar: var(--sidebar);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+
+    --radius-sm: calc(var(--radius) - 4px);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* ───────────────────────────────────────────
+   Light (derived from the brand palette)
+   ─────────────────────────────────────────── */
+:root {
+    --radius: 0.75rem;
+
+    --background: #fbf9ff;
+    --foreground: #12102a;
+
+    --card: #ffffff;
+    --card-foreground: #12102a;
+
+    --popover: #ffffff;
+    --popover-foreground: #12102a;
+
+    /* brand accent #C770F0 + on-accent */
+    --primary: #c770f0;
+    --primary-foreground: #1b1030;
+
+    /* accent-soft (tag background) */
+    --secondary: #f5e9fd;
+    --secondary-foreground: #623686; /* accent-deep */
+
+    --muted: #f1edfa;
+    --muted-foreground: #5e5780;
+
+    /* hover / focus surfaces */
+    --accent: #f5e9fd;
+    --accent-foreground: #12102a;
+
+    --destructive: #dc2626;
+    --destructive-foreground: #ffffff;
+
+    --border: #e8d5f7; /* line */
+    --input: #e8d5f7;
+    --ring: #8f6bff; /* accent-2 */
+
+    /* extra brand tokens */
+    --success: #16a34a;
+    --success-foreground: #ffffff;
+    --highlight: #f2b8ff;
+    --accent-2: #8f6bff;
+    --accent-deep: #623686;
+    --code: #0c0a1d;
+    --code-foreground: #f4f1ff;
+
+    --chart-1: #c770f0;
+    --chart-2: #8f6bff;
+    --chart-3: #623686;
+    --chart-4: #f2b8ff;
+    --chart-5: #4ade80;
+
+    --sidebar: #f5f1fc;
+    --sidebar-foreground: #12102a;
+    --sidebar-primary: #c770f0;
+    --sidebar-primary-foreground: #1b1030;
+    --sidebar-accent: #f5e9fd;
+    --sidebar-accent-foreground: #12102a;
+    --sidebar-border: #e8d5f7;
+    --sidebar-ring: #8f6bff;
+}
+
+/* ───────────────────────────────────────────
+   Dark (taken directly from the palette image)
+   ─────────────────────────────────────────── */
+.dark {
+    --background: #12102a; /* bg */
+    --foreground: #f4f1ff; /* ink */
+
+    --card: rgb(255 255 255 / 0.05); /* surface */
+    --card-foreground: #f4f1ff;
+
+    --popover: #1b1a2e; /* bg-2 */
+    --popover-foreground: #f4f1ff;
+
+    --primary: #c770f0; /* accent */
+    --primary-foreground: #1b1030; /* on-accent */
+
+    --secondary: rgb(199 112 240 / 0.14); /* accent-soft */
+    --secondary-foreground: #c770f0;
+
+    --muted: #1b1a2e; /* bg-2 */
+    --muted-foreground: #b9b2d6; /* muted */
+
+    --accent: rgb(199 112 240 / 0.14);
+    --accent-foreground: #f4f1ff;
+
+    --destructive: #f87171;
+    --destructive-foreground: #1b1030;
+
+    --border: rgb(199 112 240 / 0.24); /* line */
+    --input: rgb(199 112 240 / 0.24);
+    --ring: #f2b8ff; /* highlight */
+
+    --success: #4ade80;
+    --success-foreground: #0c0a1d;
+    --highlight: #f2b8ff;
+    --accent-2: #8f6bff;
+    --accent-deep: #623686;
+    --code: #0c0a1d;
+    --code-foreground: #f4f1ff;
+
+    --chart-1: #c770f0;
+    --chart-2: #8f6bff;
+    --chart-3: #f2b8ff;
+    --chart-4: #623686;
+    --chart-5: #4ade80;
+
+    --sidebar: #1b1a2e;
+    --sidebar-foreground: #f4f1ff;
+    --sidebar-primary: #c770f0;
+    --sidebar-primary-foreground: #1b1030;
+    --sidebar-accent: rgb(199 112 240 / 0.14);
+    --sidebar-accent-foreground: #f4f1ff;
+    --sidebar-border: rgb(199 112 240 / 0.24);
+    --sidebar-ring: #f2b8ff;
+}
+
+@layer base {
+    * {
+        @apply border-border outline-ring/50;
+    }
+    body {
+        @apply relative bg-background text-foreground;
+    }
+    html {
+        @apply font-sans scroll-smooth;
+    }
+}
