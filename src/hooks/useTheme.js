@@ -1,6 +1,23 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useLocalStorage } from "./useLocalStorage";
 
+/**
+ * Manages the user's theme preference and synchronizes the active theme
+ * with the system color scheme and document's dark mode class.
+ *
+ * Supports light, dark, and system preferences, persisting the selection
+ * in localStorage.
+ *
+ * @returns {{
+ *   theme: "light" | "dark",
+ *   preference: "light" | "dark" | "system",
+ *   toggleTheme: () => void,
+ *   useSystemTheme: () => void
+ * }} The active theme, saved preference, and theme control functions
+ *
+ * @example
+ * const { theme, preference, toggleTheme, useSystemTheme } = useTheme();
+ */
 export const useTheme = () => {
     const [preference, setPreference] = useLocalStorage("theme", "system");
 
@@ -20,6 +37,7 @@ export const useTheme = () => {
         };
 
         mediaQuery.addEventListener("change", handleChange);
+
         return () => {
             mediaQuery.removeEventListener("change", handleChange);
         };

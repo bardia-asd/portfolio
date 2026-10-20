@@ -1,5 +1,5 @@
 import { Moon, Sun } from "lucide-react";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 import { useTheme } from "@/hooks/useTheme";
 import { useLanguage } from "@/context/languageContext";
 
@@ -13,7 +13,7 @@ import { useLanguage } from "@/context/languageContext";
  */
 const ThemeSwitcher = () => {
     const { theme, toggleTheme } = useTheme();
-    const { language } = useLanguage();
+    const { t } = useLanguage();
 
     return (
         <Button
@@ -21,13 +21,9 @@ const ThemeSwitcher = () => {
             variant="ghost"
             onClick={toggleTheme}
             aria-label={
-                language === "fa"
-                    ? theme === "dark"
-                        ? "تغییر به تم روشن"
-                        : "تغییر به تم تاریک"
-                    : theme === "dark"
-                      ? "Switch to light theme"
-                      : "Switch to dark theme"
+                theme === "light"
+                    ? t.accessibility.switchToDarkTheme
+                    : t.accessibility.switchToLightTheme
             }>
             {theme === "dark" ? (
                 <Sun aria-hidden="true" />

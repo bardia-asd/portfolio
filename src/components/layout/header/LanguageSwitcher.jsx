@@ -1,5 +1,5 @@
+import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/context/languageContext";
-import { Button } from "./ui/button";
 
 /**
  * Renders a button that switches between Persian and English.
@@ -8,18 +8,14 @@ import { Button } from "./ui/button";
  * <LanguageSwitcher />
  */
 const LanguageSwitcher = () => {
-    const { language, changeLanguage } = useLanguage();
+    const { t, changeLanguage } = useLanguage();
 
     return (
         <Button
             variant="ghost"
             className="w-fit"
             onClick={changeLanguage}
-            aria-label={
-                language === "fa"
-                    ? "تغییر زبان به انگلیسی"
-                    : "Change language to Persian"
-            }>
+            aria-label={t.accessibility.switchLanguage}>
             Fa/En
         </Button>
     );

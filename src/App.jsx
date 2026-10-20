@@ -1,7 +1,6 @@
 import { useEffect } from "react";
-import LanguageSwitcher from "./components/LanguageSwitcher";
 import { useLanguage } from "./context/languageContext";
-import ThemeSwitcher from "./components/ThemeSwitcher";
+import Header from "./components/layout/header/Header";
 
 const App = () => {
     const { language } = useLanguage();
@@ -13,8 +12,11 @@ const App = () => {
 
     return (
         <div className="min-h-dvh flex flex-col">
-            <ThemeSwitcher />
-            <LanguageSwitcher />
+            <Header />
+            <section id="home" className="h-90 bg-card mt-10"></section>
+            <section id="projects" className="h-90 bg-card mt-10"></section>
+            <section id="about" className="h-90 bg-card mt-10"></section>
+            <section id="contact" className="h-90 bg-card mt-10"></section>
         </div>
     );
 };
