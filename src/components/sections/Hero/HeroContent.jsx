@@ -48,7 +48,7 @@ const HeroContent = () => {
                 {hero.description}
             </p>
 
-            <div className="flex flex-col gap-3 lg:flex-row lg:gap-4">
+            <div className="flex flex-col gap-3 sm:flex-row lg:gap-4">
                 <Button asChild size="lg">
                     <a href="#projects">{hero.cta.projects}</a>
                 </Button>

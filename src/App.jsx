@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import Header from "./components/layout/header";
-import { HeroSection } from "./components/sections";
+import { HeroSection, ProjectsSection } from "./components/sections";
 import { useLanguage } from "./context/languageContext";
 
 const App = () => {
@@ -17,10 +17,8 @@ const App = () => {
             <main>
                 <div className="container mx-auto px-5">
                     <HeroSection />
-
-                    <section
-                        id="projects"
-                        className="h-90 bg-card mt-10"></section>
+                    <ProjectsSection />
+                    
                     <section
                         id="about"
                         className="h-90 bg-card mt-10"></section>

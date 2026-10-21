@@ -121,7 +121,7 @@ const HeroCode = () => {
 
             <pre
                 dir="ltr"
-                className="h-52 overflow-x-auto bg-code p-5 text-left text-sm sm:text-base">
+                className="h-52 overflow-x-auto bg-code p-5 text-left text-sm sm:text-base font-mono">
                 {tokens.map((token, i) => {
                     if (remaining <= 0) return null;
 
