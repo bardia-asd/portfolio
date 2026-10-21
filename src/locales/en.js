@@ -7,6 +7,25 @@ const en = {
         contact: "Contact Me",
     },
 
+    hero: {
+        intro: {
+            greeting: "Hi, I'm",
+            name: "Bardia",
+            introduction: "",
+        },
+        title: {
+            first: "Front-End",
+            second: "Developer",
+        },
+        description:
+            "I build user interfaces with React and JavaScript, focusing on making websites intuitive and enjoyable to use.",
+        availability: "Open to work",
+        cta: {
+            projects: "View Projects",
+            contact: "Get in Touch",
+        },
+    },
+
     accessibility: {
         mainNavigation: "Main navigation",
         mobileNavigation: "Mobile navigation",

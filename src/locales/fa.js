@@ -7,6 +7,25 @@ const fa = {
         contact: "تماس با من",
     },
 
+    hero: {
+        intro: {
+            greeting: "سلام، من",
+            name: "بردیا",
+            introduction: "هستم",
+        },
+        title: {
+            first: "توسعه‌دهنده",
+            second: "فرانت‌اند",
+        },
+        description:
+            "با React و JavaScript رابط‌های کاربری می‌سازم که استفاده از وب‌سایت‌ها رو ساده‌تر و لذت‌بخش‌تر می‌کنن.",
+        availability: "آماده همکاری",
+        cta: {
+            projects: "مشاهده پروژه‌ها",
+            contact: "ارتباط با من",
+        },
+    },
+
     accessibility: {
         mainNavigation: "پیمایش اصلی",
         mobileNavigation: "پیمایش موبایل",

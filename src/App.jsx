@@ -1,6 +1,7 @@
 import { useEffect } from "react";
+import Header from "./components/layout/header";
+import { HeroSection } from "./components/sections";
 import { useLanguage } from "./context/languageContext";
-import Header from "./components/layout/header/Header";
 
 const App = () => {
     const { language } = useLanguage();
@@ -13,10 +14,21 @@ const App = () => {
     return (
         <div className="min-h-dvh flex flex-col">
             <Header />
-            <section id="home" className="h-90 bg-card mt-10"></section>
-            <section id="projects" className="h-90 bg-card mt-10"></section>
-            <section id="about" className="h-90 bg-card mt-10"></section>
-            <section id="contact" className="h-90 bg-card mt-10"></section>
+            <main>
+                <div className="container mx-auto px-5">
+                    <HeroSection />
+
+                    <section
+                        id="projects"
+                        className="h-90 bg-card mt-10"></section>
+                    <section
+                        id="about"
+                        className="h-90 bg-card mt-10"></section>
+                    <section
+                        id="contact"
+                        className="h-90 bg-card mt-10"></section>
+                </div>
+            </main>
         </div>
     );
 };

@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
  */
 export const badgeVariants = cva(
     // Base styles shared by every badge variant
-    "inline-flex items-center rounded-md border px-2.5 py-0.5 text-[10px] font-semibold transition-colors focus:outline-none focus:ring-1 focus:ring-ring focus:ring-offset-2",
+    "inline-flex items-center gap-2 rounded-md border px-2.5 py-0.5 text-[10px] font-semibold transition-colors focus:outline-none focus:ring-1 focus:ring-ring focus:ring-offset-2",
     {
         variants: {
             variant: {
