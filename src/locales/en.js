@@ -112,6 +112,17 @@ const en = {
         },
     },
 
+    contact: {
+        title: "Get in Touch",
+        description:
+            "Have a project in mind or an opportunity to discuss? Feel free to reach out. I'd love to hear from you.",
+        socials: {
+            github: "GitHub",
+            telegram: "Telegram",
+            email: "Email",
+        },
+    },
+
     accessibility: {
         mainNavigation: "Main navigation",
         mobileNavigation: "Mobile navigation",

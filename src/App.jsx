@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import Header from "./components/layout/header";
 import {
     AboutSection,
+    ContactSection,
     HeroSection,
     ProjectsSection,
 } from "./components/sections";
@@ -23,9 +24,7 @@ const App = () => {
                     <HeroSection />
                     <ProjectsSection />
                     <AboutSection />
-                    <section
-                        id="contact"
-                        className="h-90 bg-card mt-10"></section>
+                    <ContactSection />
                 </div>
             </main>
         </div>

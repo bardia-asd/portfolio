@@ -112,6 +112,17 @@ const fa = {
         },
     },
 
+    contact: {
+        title: "ارتباط با من",
+        description:
+            "پروژه‌ای در ذهن دارید یا پیشنهادی برای همکاری دارید؟ خوشحال می‌شوم با من در ارتباط باشید.",
+        socials: {
+            github: "گیت‌هاب",
+            telegram: "تلگرام",
+            email: "ایمیل",
+        },
+    },
+
     accessibility: {
         mainNavigation: "پیمایش اصلی",
         mobileNavigation: "پیمایش موبایل",
