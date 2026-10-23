@@ -1,3 +1,4 @@
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import { useTypewriter } from "@/hooks/useTypewriter";
 import { cn } from "@/lib/utils";
 
@@ -108,7 +109,9 @@ const fullText = tokens.map((t) => t.text).join("");
  * <HeroCode />
  */
 const HeroCode = () => {
-    const displayed = useTypewriter(fullText, 40);
+    const reducedMotion = usePrefersReducedMotion();
+    const typed = useTypewriter(fullText, 40);
+    const displayed = reducedMotion ? fullText : typed;
     let remaining = displayed.length;
 
     return (

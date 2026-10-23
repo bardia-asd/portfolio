@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { usePrefersReducedMotion } from "./usePrefersReducedMotion";
 
 /**
  * Reveals text one character at a time at the specified speed.
@@ -13,21 +14,23 @@ import { useEffect, useState } from "react";
  * const displayedText = useTypewriter("Front-End Developer", 60);
  */
 export const useTypewriter = (text, speed = 60) => {
-    const [displayed, setDisplayed] = useState("");
+    const reducedMotion = usePrefersReducedMotion();
+    const [count, setCount] = useState(0);
 
     useEffect(() => {
-        setDisplayed("");
+        if (reducedMotion) return;
+
+        setCount(0);
         let i = 0;
 
         const intervalId = setInterval(() => {
-            i++;
-            setDisplayed(text.slice(0, i));
-
+            i += 1;
+            setCount(i);
             if (i >= text.length) clearInterval(intervalId);
         }, speed);
 
         return () => clearInterval(intervalId);
-    }, [text, speed]);
+    }, [text, speed, reducedMotion]);
 
-    return displayed;
+    return reducedMotion ? text : text.slice(0, count);
 };

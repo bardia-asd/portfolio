@@ -75,6 +75,43 @@ const fa = {
         ],
     },
 
+    about: {
+        name: "بردیا اسدی",
+        role: "توسعه‌دهنده جونیور فرانت‌اند",
+        badges: {
+            availability: "آماده همکاری",
+            workType: "دورکاری",
+        },
+        resume: "دانلود رزومه",
+
+        title: "درباره من",
+        description:
+            "من توسعه‌دهنده جونیور فرانت‌اند هستم و با React و Tailwind CSS وب‌اپلیکیشن‌های واکنش‌گرا، دسترس‌پذیر و کاربرپسند می‌سازم. از تبدیل ایده‌ها به پروژه‌های واقعی لذت می‌برم، از فروشگاه‌های آنلاین تا اپلیکیشن‌های خبری و ورزشی. به‌دنبال فرصتی برای رشد در یک تیم حرفه‌ای هستم.",
+
+        skills: {
+            title: "مهارت‌ها",
+            frontend: {
+                title: "مهارت‌های فرانت‌اند",
+                items: [
+                    "HTML5",
+                    "CSS3",
+                    "JavaScript",
+                    "React",
+                    "طراحی واکنش‌گرا",
+                    "Tailwind CSS",
+                ],
+            },
+            tools: {
+                title: "ابزارها و فناوری‌ها",
+                items: ["Git", "GitHub", "Vite", "Redux Toolkit"],
+            },
+            learning: {
+                title: "در حال یادگیری",
+                items: ["TypeScript"],
+            },
+        },
+    },
+
     accessibility: {
         mainNavigation: "پیمایش اصلی",
         mobileNavigation: "پیمایش موبایل",
@@ -87,6 +124,7 @@ const fa = {
         demoLink: "مشاهده نسخه زنده {title} (در زبانه جدید باز می‌شود)",
         repoLink:
             "مشاهده کد منبع {title} در گیت‌هاب (در زبانه جدید باز می‌شود)",
+        downloadResume: "دانلود رزومه (PDF)",
     },
 };
 

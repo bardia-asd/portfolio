@@ -75,6 +75,43 @@ const en = {
         ],
     },
 
+    about: {
+        name: "Bardia Asadi",
+        role: "Junior Front-End Developer",
+        badges: {
+            availability: "Open to Work",
+            workType: "Remote",
+        },
+        resume: "Download Resume",
+
+        title: "About Me",
+        description:
+            "I’m a junior front-end developer who builds responsive, accessible, and user-friendly web applications with React and Tailwind CSS. I enjoy turning ideas into real projects, from online stores to news and sports apps. I’m looking for an opportunity to grow in a professional team.",
+
+        skills: {
+            title: "Skills",
+            frontend: {
+                title: "Front-End Skills",
+                items: [
+                    "HTML5",
+                    "CSS3",
+                    "JavaScript",
+                    "React",
+                    "Responsive Design",
+                    "Tailwind CSS",
+                ],
+            },
+            tools: {
+                title: "Tools & Technologies",
+                items: ["Git", "GitHub", "Vite", "Redux Toolkit"],
+            },
+            learning: {
+                title: "Currently Learning",
+                items: ["TypeScript"],
+            },
+        },
+    },
+
     accessibility: {
         mainNavigation: "Main navigation",
         mobileNavigation: "Mobile navigation",
@@ -86,6 +123,7 @@ const en = {
         viewProjectDemo: "{title} live demo (opens in a new tab)",
         demoLink: "View {title} live demo (opens in a new tab)",
         repoLink: "View {title} source code on GitHub (opens in a new tab)",
+        downloadResume: "Download resume (PDF)",
     },
 };
 
