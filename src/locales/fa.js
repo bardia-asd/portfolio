@@ -123,6 +123,11 @@ const fa = {
         },
     },
 
+    footer: {
+        copyright: "© ۱۴۰۵ بردیا اسدی",
+        backToTop: "بازگشت به بالا",
+    },
+
     accessibility: {
         mainNavigation: "پیمایش اصلی",
         mobileNavigation: "پیمایش موبایل",

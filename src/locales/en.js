@@ -123,6 +123,11 @@ const en = {
         },
     },
 
+    footer: {
+        copyright: "© 2026 Bardia Asadi",
+        backToTop: "Back to top",
+    },
+
     accessibility: {
         mainNavigation: "Main navigation",
         mobileNavigation: "Mobile navigation",
