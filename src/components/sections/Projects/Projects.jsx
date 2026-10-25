@@ -14,7 +14,7 @@ const Projects = () => {
 
     return (
         <section id="projects" className="scroll-mt-14 py-8 lg:py-12">
-            <div>
+            <div className="max-w-2xl">
                 <h2 className="mb-2 text-2xl font-bold lg:text-3xl">
                     {projects.title}
                 </h2>
@@ -23,11 +23,13 @@ const Projects = () => {
                 </p>
             </div>
 
-            <div className="mt-5 flex flex-col gap-5 lg:mt-10 lg:gap-6">
+            <ul className="mt-6 grid gap-5 sm:grid-cols-2 lg:mt-10 lg:grid-cols-3 lg:gap-6">
                 {projects.items.map((item) => (
-                    <ProjectCard key={item.title} item={item} />
+                    <li key={item.title} className="flex">
+                        <ProjectCard item={item} />
+                    </li>
                 ))}
-            </div>
+            </ul>
         </section>
     );
 };

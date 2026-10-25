@@ -12,10 +12,10 @@ import { cn } from "@/lib/utils";
  * paused and displaying the static image.
  *
  * @param {Object} props
- * @param {string} props.image - The URL of the static preview image
- * @param {string} props.video - The URL of the project preview video
- * @param {string} props.title - The project title, used for alternative text and the accessible link label
- * @param {string} props.demo - The URL of the live project demo
+ * @param {string} props.image - URL of the static preview image
+ * @param {string} [props.video] - Optional URL of the project preview video
+ * @param {string} props.title - Project title used for alternative text and the accessible link label
+ * @param {string} [props.demo] - URL of the live project demo
  *
  * @example
  * <ProjectPreview
@@ -34,12 +34,13 @@ const ProjectPreview = ({ image, video, title, demo }) => {
     const videoRef = useRef(null);
     const reducedMotion = usePrefersReducedMotion();
 
+    const showVideo = Boolean(video) && isPlaying && !reducedMotion;
+
     useEffect(() => {
         const element = videoRef.current;
-
         if (!element) return;
 
-        if (isPlaying && !reducedMotion) {
+        if (showVideo) {
             element.play().catch(() => {});
         } else {
             element.pause();
@@ -47,9 +48,50 @@ const ProjectPreview = ({ image, video, title, demo }) => {
         }
 
         return () => element.pause();
-    }, [isPlaying, reducedMotion]);
+    }, [showVideo]);
 
-    const showVideo = isPlaying && !reducedMotion;
+    const frameClass =
+        "group relative block aspect-video overflow-hidden border-b bg-muted";
+
+    const content = (
+        <>
+            {video && (
+                <video
+                    ref={videoRef}
+                    src={video}
+                    muted
+                    loop
+                    playsInline
+                    preload="none"
+                    aria-hidden="true"
+                    tabIndex={-1}
+                    className="absolute inset-0 size-full object-cover"
+                />
+            )}
+
+            {image ? (
+                <img
+                    src={image}
+                    alt={title}
+                    loading="lazy"
+                    className={cn(
+                        "absolute inset-0 size-full object-cover object-top transition-opacity duration-300 motion-reduce:transition-none",
+                        showVideo ? "opacity-0" : "opacity-100",
+                    )}
+                />
+            ) : (
+                <span
+                    aria-hidden="true"
+                    className="absolute inset-0 flex items-center justify-center text-muted-foreground/60">
+                    <ImageOff className="size-7" />
+                </span>
+            )}
+        </>
+    );
+
+    if (!demo) {
+        return <div className={frameClass}>{content}</div>;
+    }
 
     return (
         <a
@@ -57,37 +99,15 @@ const ProjectPreview = ({ image, video, title, demo }) => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={accessibility.viewProjectDemo.replace("{title}", title)}
-            className="group relative block aspect-video overflow-hidden bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset lg:aspect-auto lg:h-full lg:min-h-52"
+            className={cn(
+                frameClass,
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset",
+            )}
             onMouseEnter={() => setIsPlaying(true)}
             onMouseLeave={() => setIsPlaying(false)}
             onFocus={() => setIsPlaying(true)}
             onBlur={() => setIsPlaying(false)}>
-            <video
-                ref={videoRef}
-                muted
-                loop
-                playsInline
-                preload="none"
-                aria-hidden="true"
-                tabIndex={-1}
-                className="absolute inset-0 size-full object-cover">
-                <source src={video} type="video/mp4" />
-            </video>
-
-            <img
-                src={image}
-                alt={title}
-                loading="lazy"
-                className={cn(
-                    "absolute inset-0 size-full object-cover transition-opacity duration-300 motion-reduce:transition-none",
-                    showVideo ? "opacity-0" : "opacity-100",
-                )}
-            />
-
-            <span
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/5 motion-reduce:transition-none"
-            />
+            {content}
         </a>
     );
 };

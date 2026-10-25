@@ -9,13 +9,70 @@ import {
 } from "@/components/ui/card";
 import { useLanguage } from "@/context/languageContext";
 import ProjectPreview from "./ProjectPreview";
+import { ExternalLink } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
+
+/**
+ * Renders a project link button or a disabled button when no URL is provided.
+ *
+ * @param {Object} props
+ * @param {string} [props.href] - URL to the project demo or repository
+ * @param {string} props.label - Text displayed on the button
+ * @param {string} props.ariaLabel - Accessible label for the link
+ * @param {React.ComponentType<{ size?: number; className?: string }>} props.icon - Icon component
+ * @param {"default" | "secondary" | "outline" | "ghost" | "link"} props.variant - Button style variant
+ *
+ * @example
+ * <ProjectLink
+ *   href="https://example.com"
+ *   label="Live Demo"
+ *   ariaLabel="View project demo"
+ *   icon={ExternalLink}
+ *   variant="default"
+ * />
+ */
+const ProjectLink = ({ href, label, ariaLabel, icon: Icon, variant }) => {
+    if (!href) {
+        return (
+            <Button
+                variant="outline"
+                size="lg"
+                disabled
+                className="flex-1 border-dashed">
+                <Icon aria-hidden="true" />
+                {label}
+            </Button>
+        );
+    }
+
+    return (
+        <Button asChild size="lg" variant={variant} className="flex-1">
+            <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={ariaLabel}>
+                <Icon size={18} aria-hidden="true" />
+                {label}
+            </a>
+        </Button>
+    );
+};
 
 /**
  * Renders a project card with a preview, description, technology badges,
  * and links to the live demo and source repository.
  *
  * @param {Object} props
- * @param {Object} props.item - The project data used to populate the card
+ * @param {Object} props.item - Project data used to populate the card
+ * @param {string} props.item.title - Project title
+ * @param {string} props.item.description - Project description
+ * @param {string} props.item.image - Project preview image URL
+ * @param {string} [props.item.video] - Optional project preview video URL
+ * @param {string} [props.item.demo] - Live demo URL
+ * @param {string} [props.item.repo] - Source repository URL
+ * @param {string[]} props.item.tools - Technologies used in the project
+ * @param {Object} props.item.links - Localized labels for project links and tools
  *
  * @example
  * <ProjectCard item={project} />
@@ -26,23 +83,22 @@ const ProjectCard = ({ item }) => {
     } = useLanguage();
 
     return (
-        <Card className="grid grid-cols-1 overflow-hidden lg:grid-cols-3">
-            <div className="lg:order-2 lg:min-w-0">
-                <ProjectPreview
-                    image={item.image}
-                    video={item.video}
-                    title={item.title}
-                    demo={item.demo}
-                />
-            </div>
+        <Card className="flex w-full flex-col overflow-hidden transition-colors hover:border-primary/50 motion-reduce:transition-none">
+            <ProjectPreview
+                image={item.image}
+                video={item.video}
+                title={item.title}
+                demo={item.demo}
+            />
 
-            <CardContent className="flex flex-col gap-4 p-5 sm:p-6 lg:col-span-2 lg:order-1 lg:min-w-0">
+            <CardContent className="flex flex-1 flex-col gap-4 p-5">
                 <div className="space-y-2">
-                    <CardTitle className="text-lg lg:text-xl">
+                    <CardTitle className="text-lg leading-snug">
                         {item.title}
                     </CardTitle>
-
-                    <CardDescription>{item.description}</CardDescription>
+                    <CardDescription className="leading-7">
+                        {item.description}
+                    </CardDescription>
                 </div>
 
                 <ul
@@ -50,41 +106,34 @@ const ProjectCard = ({ item }) => {
                     aria-label={item.links.toolsLabel}>
                     {item.tools.map((tool) => (
                         <li key={tool}>
-                            <Badge variant="secondary">{tool}</Badge>
+                            <Badge variant="secondary" dir="ltr">
+                                {tool}
+                            </Badge>
                         </li>
                     ))}
                 </ul>
 
-                <div className="mt-2 flex flex-col gap-3 border-t pt-4 sm:flex-row">
-                    <Button asChild size="lg" className="h-12 w-full sm:w-auto">
-                        <a
-                            href={item.demo}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label={accessibility.demoLink.replace(
-                                "{title}",
-                                item.title,
-                            )}>
-                            {item.links.demo}
-                        </a>
-                    </Button>
-
-                    <Button
-                        asChild
+                <div className="mt-auto flex gap-3 border-t pt-4">
+                    <ProjectLink
+                        href={item.demo}
+                        label={item.links.demo}
+                        ariaLabel={accessibility.demoLink.replace(
+                            "{title}",
+                            item.title,
+                        )}
+                        icon={ExternalLink}
+                        variant="default"
+                    />
+                    <ProjectLink
+                        href={item.repo}
+                        label={item.links.repo}
+                        ariaLabel={accessibility.repoLink.replace(
+                            "{title}",
+                            item.title,
+                        )}
+                        icon={FaGithub}
                         variant="outline"
-                        size="lg"
-                        className="h-12 w-full sm:w-auto">
-                        <a
-                            href={item.repo}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label={accessibility.repoLink.replace(
-                                "{title}",
-                                item.title,
-                            )}>
-                            {item.links.repo}
-                        </a>
-                    </Button>
+                    />
                 </div>
             </CardContent>
         </Card>
