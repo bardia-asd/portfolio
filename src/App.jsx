@@ -7,6 +7,7 @@ import {
     HeroSection,
     ProjectsSection,
 } from "./components/sections";
+import ParticleNetwork from "./components/ParticleNetwork";
 import { useLanguage } from "./context/languageContext";
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
 
     return (
         <div className="min-h-dvh flex flex-col">
+            <ParticleNetwork />
             <Header />
             <main>
                 <div className="container mx-auto px-5">
